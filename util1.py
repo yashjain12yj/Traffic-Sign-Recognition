@@ -10,12 +10,8 @@ import pickle
 
 class DataSet:
     def __init__(self, X, y):
-        self.X = X
-        self.y = y
-
-        self.pointer = 0
-        self.dataset_length = len(y)
-
+        sef.X , self.y, self.pointer, self.dataset_length = (X, y, 0, len(y))
+        
     def next_batch(self, size):
         next_indices = np.arange(self.pointer, self.pointer + size) % self.dataset_length
         self.pointer += size
@@ -25,7 +21,6 @@ class DataSet:
 
     def length(self):
         return self.dataset_length
-
 
 def train_dev_split(X, y, test_size=0.1):
     train_features, dev_features, train_labels, dev_labels = train_test_split(X,
